@@ -1,0 +1,53 @@
+<%= render 'shared/page_title', title: "All Recipes" %>
+
+<ul class="nav nav-tabs">
+  <li class="active">
+    <%= link_to "Recipes", recipes_path %>
+  </li>
+  <li>
+    <%= link_to "Chefs", chefs_path %>
+  </li>
+</ul>
+
+  <% if @recipes.total_pages > 1 %>
+    <%= will_paginate %>
+  <% else %>
+    <h2></h2>
+  <% end %>
+    
+<% @recipes.each do |recipe| %>
+  <div class="row">
+    <div class="col-lg-2">
+      <section class="chef_info center">
+        <%= link_to gravatar_for(recipe.chef, size: 100), chef_path(recipe.chef) %>
+        <h6>Chef Name: <%= link_to recipe.chef.chefname, chef_path(recipe.chef) %></h6>
+      </section>
+    </div>
+    
+    <div class="col-lg-6 well">
+      <section>
+        <h4><%= link_to recipe.name, recipe_path(recipe) %></h4>
+        <p><%= recipe.summary %></p>
+        <% if recipe.styles.any? %>
+          <p>Styles:<%= render recipe.styles %></p>
+        <% end %>
+        <% if recipe.ingredients.any? %>
+          <p>Ingredients:<%= render recipe.ingredients %></p>
+        <% end %>
+        <div>
+          <span class="quiet"><small>created <%= time_ago_in_words(recipe.created_at) %> ago, </small></span>
+          <span class="quiet"><small>updated <%= time_ago_in_words(recipe.updated_at) %> ago</small></span>
+          
+          <%= render 'shared/likes_dislikes', obj: recipe %>
+          
+        </div>
+      </section>
+    </div>
+    <div class="col-lg-4">
+      <%= image_tag(recipe.picture.url, size: "250x150", class: "gravatar") if recipe.picture? %>
+    </div>
+  </div>
+  <hr />  
+<% end %>
+
+<%= will_paginate %>

@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col-md-8 well col-md-offset-2 recipe_form">
+    <%= bootstrap_form_for(@style) do |f| %>
+      
+      <%= f.text_field :name %>
+      
+      <%= f.submit 'Add Style', class: "btn btn-success" %>
+    <% end %>
+  </div>
+</div>

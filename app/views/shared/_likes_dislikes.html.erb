@@ -1,0 +1,22 @@
+        <div class="pull-right">
+          
+          <% if logged_in? %>
+          
+            <%= link_to like_recipe_path(obj, like: true), method: :post, class: "like_box" do %>
+              <i class="glyphicon glyphicon-thumbs-up"></i><%= obj.thumbs_up_total %>
+            <% end %>&nbsp&nbsp
+            <%= link_to like_recipe_path(obj, like: false), method: :post, class: "dislike_box" do %>
+              <i class="glyphicon glyphicon-thumbs-down"></i><%= obj.thumbs_down_total %>
+            <% end %>
+          
+          <% else %>
+          
+            <span class="like_box">
+              <i class="glyphicon glyphicon-thumbs-up"></i><%= obj.thumbs_up_total %>
+            </span>&nbsp&nbsp
+            <span class="dislike_box">
+              <i class="glyphicon glyphicon-thumbs-down"></i><%= obj.thumbs_down_total %>
+            </span>
+          
+          <% end %>
+        </div>

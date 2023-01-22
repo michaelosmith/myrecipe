@@ -1,0 +1,72 @@
+<%= render 'shared/page_title', title: @recipe.name %>
+
+<div class="row">
+  <div class="col-md-4 pull-right text-center">
+    <%= link_to gravatar_for(@recipe.chef, size: 200), chef_path(@recipe.chef) %>
+    <p>
+      <h5>Brought to you by: <%= link_to @recipe.chef.chefname, chef_path(@recipe.chef) %></h5>
+    </p>
+  </div>
+  <div class="col-md-8">
+    <% if logged_in? and @recipe.chef == current_user || current_user.admin? %>
+      <%= link_to "Edit recipe", edit_recipe_path, class: "btn btn-default btn-primary pull-right" %>
+    <% end %>
+    <% if logged_in? and current_user.admin? %>
+      <%= link_to "[Delete Recipe]", @recipe, method: :delete, data: { confirm: "Are you sure?" } %>
+    <% end %>
+    <h3><%= @recipe.summary %></h3>
+    <div class="show_recipe">
+      <%= image_tag(@recipe.picture.url, class: "gravatar") if @recipe.picture? %>
+    </div>
+    <div class="well">
+      <div class="pull-right">
+        <% if @recipe.styles.any? %>
+          <p>Styles:<%= render @recipe.styles %></p>
+        <% end %>
+        <% if @recipe.ingredients.any? %>
+          <p>Ingredients:<%= render @recipe.ingredients %></p>
+        <% end %>
+      </div>
+      <p>
+        <h4>Steps:</h4>
+      </p>
+      <%= simple_format(@recipe.description) %>
+      
+      <div id="recipe_bottom">
+        <%= render 'shared/likes_dislikes', obj: @recipe %>
+        <%= link_to "Return to recipes listing", recipes_path, class: "btn btn-warning btn-sm" %>
+      </div>
+    </div>
+  </div>
+      <div id="reviews">
+        <% if logged_in? %>
+          <%= render 'reviews/form' %>
+        <% end %>
+                <div class="col-md-8">
+                  <div class="page-header">
+                    <h1><small class="pull-right">
+                        <% if @reviews.count < 2 %>
+                          <%= @reviews.count %> review
+                        <% else %>
+                          <%= @reviews.count %> reviews
+                        <% end %>
+                        </small> Reviews </h1>
+                  </div> 
+                   <div class="comments-list"> <!-- start review list -->
+                     <% @reviews.each do |review| %>
+                     <div class="media">
+                       <p class="pull-right"><small><%= time_ago_in_words(review.created_at) %> ago</small></p>
+                         <a href="#">
+                           <%= link_to gravatar_for(review.chef, size: 50), chef_path(review.chef), class: "media-left"  %>
+                         </a>
+                           <div class="media-body">
+                             <h4 class="media-heading user_name"><%= review.chef.chefname %></h4>
+                              <p><%= simple_format(review.body) %></p>
+                           </div>
+                     </div>
+                     <% end %>
+                     <%= will_paginate @reviews %>
+                   </div> <!-- end review list -->
+                </div>
+            </div>
+</div>

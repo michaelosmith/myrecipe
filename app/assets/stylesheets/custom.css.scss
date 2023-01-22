@@ -1,0 +1,99 @@
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  /*padding-top: 85px;*/
+}
+
+#logo {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  float: left;
+  font-size: 2em;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+}
+
+#logo:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.nav_item {
+  margin-left: 25px;
+  float: left;
+  margin-top: 20px;
+}
+
+#main-marketing {
+  text-align: center;
+}
+
+#main-marketing.h1, #main-marketing.h2, #main-marketing.h3, #main-marketing.h4 {
+  line-height: 1;
+}
+
+.chef_info {
+  margin-top: 10px;
+}
+
+.gravatar {
+  border-radius: 10px;
+}
+
+.well.recipe_form {
+  background-color: #ededed;
+}
+
+label.required:after {
+  content:" *";
+}
+
+.quiet {
+  font-size: 13px;
+}
+
+.show_recipe {
+  margin: 10px;
+}
+
+.like_box i {
+  margin-right: 3px;
+}
+
+.dislike_box i {
+  margin-right: 3px;
+}
+
+#recipe_bottom {
+  margin: 20px 0 -8px 0;
+}
+
+a.like_box, a.dislike_box {
+  text-decoration: none;
+}
+
+/* reviews styling */
+.user_name{
+    font-size:14px;
+    font-weight: bold;
+}
+.comments-list .media{
+    border-bottom: 1px dotted #ccc;
+}
+/* end reviews styling */
+
+/* review form styling */
+
+/* end review box styling */
+
+
+.footer {
+  margin-top: 25px;
+  border-top: 1px solid #eaeaea;
+  color: #777;
+}
+

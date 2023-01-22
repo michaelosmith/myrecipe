@@ -1,0 +1,11 @@
+<div class="col-md-8">
+  <div class="widget-area no-padding blank">
+    <div class="status-upload">
+      <%= bootstrap_form_for([@recipe, @recipe.reviews.build]) do |f| %>
+        <%= f.text_area :body, placeholder: "Please leave a review for this recipe...", hide_label: true, rows: 4 %>
+        
+        <%= f.submit "Post Review", class: "btn btn-success green" %>
+      <% end %>
+    </div><!-- Status Upload  -->
+  </div><!-- Widget Area -->
+</div>

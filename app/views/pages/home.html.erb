@@ -1,0 +1,30 @@
+<div class="jumbotron center" id="main-marketing">
+  <h1>Welcome to MyRecipes App</h1>
+  <h2>This is the homepage for the Udemy Rails course and it is my attempt at it</h2>
+  
+  <%= link_to "Sign Up Now", register_path, class: "btn btn-lg btn-success" %>
+</div>
+
+<div class="row">
+  <div class="col-lg-4">
+    <h3 class="midrow">
+      View Recipes as guest user
+    </h3>
+    <p>Browse recipes as guest user and sign up later for enchanced features</p>
+    <%= link_to "Browse Recipe Listings", recipes_path, class: "btn btn-warning btn-small" %>
+  </div>
+  <div class="col-lg-4">
+    <h3 class="midrow">
+      Sign in to your account
+    </h3>
+    <p>Add/Update your recipes, create reviews, like/dislike recipes and much much more.</p>
+    <%= link_to "Log in to your account", login_path, class: "btn btn-warning btn-small" %>
+  </div>
+  <div class="col-lg-4">
+    <h3 class="midrow">
+      View Recipes as guest user
+    </h3>
+    <p>Browse recipes as guest user and sign up later</p>
+    <%= link_to "Browse Recipe Listings", "", class: "btn btn-warning btn-small" %>
+  </div>
+</div>
